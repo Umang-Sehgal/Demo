@@ -22,9 +22,5 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-              git remote add repo https://huggingface.co/shellplc/github
-              git push --force repo main
               pip install -r requirements.txt
               python script.py
-              git push https://${{vars.HF_USERNAME}}:$HF_TOKEN@huggingface.co/shellplc/github main 
-              
