@@ -33,6 +33,9 @@ jobs:
           }'
       - name: Pushing
         run: |
-          git ls-files | echo
+          git ls-files | while read file;
+          do:
+            echo "File: $file"
+          done
         
       
