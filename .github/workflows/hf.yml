@@ -24,4 +24,5 @@ jobs:
         run: | 
               pip install -r requirements.txt
               python script.py
-          
+              git push https://${{vars.HF_USERNAME}}:$HF_TOKEN@huggingface.co/models/shellplc/github main 
+              
