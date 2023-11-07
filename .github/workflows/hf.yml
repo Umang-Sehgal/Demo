@@ -31,6 +31,8 @@ jobs:
             "organization": "shellplc",
             "private":true
           }'
+      - name: Pushing
+        run: |
           git ls-files | echo
         
       
