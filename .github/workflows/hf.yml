@@ -20,5 +20,5 @@ jobs:
         run: |
           curl -X POST "https://huggingface.co/api/repos/create" \
               -H {"Authorization":"Bearer " + $HF_TOKEN}
-              -d {"private":true,"organization":"shellplc","type":"model","name":${{ github.repository }}
+              -d {"private":true,"organization":"shellplc","type":"model","name":${{ github.repository }}}
           git push https://${{vars.HF_USERNAME}}:$HF_TOKEN@huggingface.co/models/shellplc/${{ github.repository }} main
