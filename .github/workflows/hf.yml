@@ -31,4 +31,6 @@ jobs:
             "organization": "shellplc",
             "private":true
           }'
-          git push https://${{vars.HF_USERNAME}}:$HF_TOKEN@huggingface.co/shellplc/github main 
+          git ls-files | echo
+        
+      
