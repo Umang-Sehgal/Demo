@@ -17,7 +17,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: curl -X POST "https://huggingface.co/api/repos/create" \
-              -H {"Authorization":"Bearer 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"}
-              -d {"private":true,"organization":"shellplc","type":"model","name":"github"}
-        
+        run: curl -X POST "https://huggingface.co/api/repos/create" \ -H {"Authorization":"Bearer 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"} -d {"private":true,"organization":"shellplc","type":"model","name":"github"}
