@@ -28,7 +28,7 @@ jobs:
           --header 'Content-Type: application/json' \
           --data '{
             "type": "model",
-            "name": "$HF_REPO_NAME",
+            "name": "github_action",
             "organization": "shellplc",
             "private":true
           }'
