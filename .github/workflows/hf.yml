@@ -26,7 +26,7 @@ jobs:
           --header 'Content-Type: application/json' \
           --data '{
             "type": "model",
-            "name": "github",
+            "name": "github2",
             "organization": "shellplc",
             "private":true
           }'
@@ -34,6 +34,6 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git push --force https://${{vars.HF_USERNAME}}:$HF_TOKEN@huggingface.co/shellplc/github main 
+          git push --force https://${{vars.HF_USERNAME}}:$HF_TOKEN@huggingface.co/shellplc/github2 main 
         
       
