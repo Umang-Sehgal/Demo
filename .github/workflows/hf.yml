@@ -8,8 +8,8 @@ on:
   
 env:
   HF_TOKEN: ${{ secrets.HF_TOKEN }}
-  HF_USERNAME: ${{vars.HF_USERNAME}}
-  HF_REPO_NAME: ${{vars.HF_REPO_NAME}}
+  HF_USERNAME: ${{ vars.HF_USERNAME }}
+  HF_REPO_NAME: ${{ vars.HF_REPO_NAME }}
   
 jobs:
   sync-to-hub:
