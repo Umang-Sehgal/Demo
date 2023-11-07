@@ -4,4 +4,4 @@ response = requests.post(
   json={"private":"True","name":"github","organization":"shellplc","type":"model"},
   headers={"Authorization":"Bearer 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"}
 )
-print(response.text)
+print(dir(response))
