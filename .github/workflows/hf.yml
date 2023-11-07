@@ -24,11 +24,11 @@ jobs:
         
         run: |
           curl --location 'https://huggingface.co/api/repos/create' \
-          --header 'Authorization: Bearer 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' \
+          --header \'Authorization: Bearer $HF_TOKEN\' \
           --header 'Content-Type: application/json' \
           --data '{
             "type": "model",
-            "name": "github_action",
+            "name": \"$HF_REPO_NAME\",
             "organization": "shellplc",
             "private":true
           }'
