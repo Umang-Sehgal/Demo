@@ -40,6 +40,8 @@ jobs:
           
       - name: Push to HF
         run: |
+          git config --global user.name "Umang-Sehgal"
+          git config --global user.email "umangsehgal50@gmail.com"
           cd $HF_REPO_NAME
           git init
           git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
