@@ -21,24 +21,25 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-          
-      - name: Create/Check HF_Repo
-        
-        run: |
-          curl --location 'https://huggingface.co/api/repos/create' \
-          --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
-          --header 'Content-Type: application/json' \
-          --data '{
-            "type": "model",
-            "name": "${{ env.HF_REPO_NAME }}",
-            "organization": "shellplc",
-            "private":true
-          }'
-          
-      - name: Push to HF
 
+      - name: list folders
         run: |
-          ls
+          ls -d
+          
+      # - name: Create/Check HF_Repo
+        #run: |
+          # curl --location 'https://huggingface.co/api/repos/create' \
+          # --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
+          # --header 'Content-Type: application/json' \
+          # --data '{
+          #   "type": "model",
+          #   "name": "${{ env.HF_REPO_NAME }}",
+          #   "organization": "shellplc",
+          #   "private":true
+          # }'
+          
+      # - name: Push to HF
+        # run: |
           # git push --force https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME main 
           # git request-pull main https://$HF_USERNAME:$HF_TOKEN@huggingface.co/api/models/shellplc/$HF_REPO_NAME/preupload/main?create_pr=1 main 
         
