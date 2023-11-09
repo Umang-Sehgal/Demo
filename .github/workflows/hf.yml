@@ -42,7 +42,7 @@ jobs:
         run: |
           cd $HF_REPO_NAME
           git init
-          git remote set origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
+          git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
           git add .
           git commit -m "contents of ${{env.HF_REPO_NAME}}"
-          git push
+          git push -u origin master
