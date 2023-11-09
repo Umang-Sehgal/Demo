@@ -2,6 +2,8 @@ name: Sync to Hugging Face hub
 on:
   push:
     branches: [main]
+    # paths:
+    #   - 'model/**'
 
   # to run this workflow manually from the Actions tab
   workflow_dispatch: 
@@ -20,7 +22,7 @@ jobs:
           fetch-depth: 0
           lfs: true
           
-      - name: Push to hub
+      - name: Create/Check HF_Repo
         
         run: |
           curl --location 'https://huggingface.co/api/repos/create' \
@@ -28,11 +30,12 @@ jobs:
           --header 'Content-Type: application/json' \
           --data '{
             "type": "model",
-            "name": "github_action",
+            "name": "" + $HF_REPO_NAME + "",
             "organization": "shellplc",
             "private":true
           }'
-      - name: Pushing
+          
+      - name: Push to HF
 
         run: |
           git push --force https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME main 
