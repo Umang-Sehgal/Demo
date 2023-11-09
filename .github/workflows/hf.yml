@@ -25,12 +25,12 @@ jobs:
       # - name: list folders
         # run: |
           # bash script.sh
-      - name: list folders
-        run: |
-          for dir in */;
-            do
-              echo $dir
-            done
+      # - name: list folders
+      #   run: |
+      #     for dir in */;
+      #       do
+      #         echo $dir
+      #       done
           
       # - name: Create/Check HF_Repo
         #run: |
@@ -49,20 +49,19 @@ jobs:
           # git push --force https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME main 
           # git request-pull main https://$HF_USERNAME:$HF_TOKEN@huggingface.co/api/models/shellplc/$HF_REPO_NAME/preupload/main?create_pr=1 main 
 
-#       - name: Create/Update Repo
-#         run: |
-#           for n in */;
-#             do
-#               curl --location 'https://huggingface.co/api/repos/create' \
-#               --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
-#               --header 'Content-Type: application/json' \
-#               --data '{
-#               "type": "model",
-#               "name": "${{n}}",
-#               "organization": "shellplc",
-#               "private":true
-#               }'
-#             git push --force https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME main 
-# #    echo $n
-#             done
+      - name: Create/Update Repo
+        run: |
+          for dir in */;
+            do
+              curl --location 'https://huggingface.co/api/repos/create' \
+              --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
+              --header 'Content-Type: application/json' \
+              --data '{
+              "type": "model",
+              "name": "${{env.dir}}",
+              "organization": "shellplc",
+              "private":true
+              }'
+            git push --force https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME main 
+            done
       
