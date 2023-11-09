@@ -24,7 +24,7 @@ jobs:
 
       - name: list folders
         run: |
-          ls -d -- */
+          bash script.sh
           
       # - name: Create/Check HF_Repo
         #run: |
