@@ -58,10 +58,10 @@ jobs:
               --header 'Content-Type: application/json' \
               --data '{
               "type": "model",
-              "name": "${{env.dir}}",
+              "name": "$dir",
               "organization": "shellplc",
               "private":true
               }'
-            git push --force https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME main 
+            git push --force https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$dir main 
             done
       
