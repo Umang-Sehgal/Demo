@@ -30,7 +30,7 @@ jobs:
         run: |
           for dir in */;
             do
-              env.HF_REPO_NAME=${dir%%/}
+              ::set-output name=HF_REPO_NAME::${dir%%/}
               echo "${{env.HF_REPO_NAME}}"
             done
           
