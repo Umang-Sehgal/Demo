@@ -1,4 +1,4 @@
-name: Sync to Hugging Face hub
+.name: Sync to Hugging Face hub
 on:
   push:
     branches: [main]
@@ -26,13 +26,13 @@ jobs:
       #   run: bash script.sh
 
         
-      # - name: Demo loop
-      #   run: |
-      #     for dir in */;
-      #       do
-      #         var=${dir%%/}
-      #         echo $var
-      #       done
+      - name: Demo loop
+        run: |
+          for dir in */;
+            do
+              env.HF_REPO_NAME=${dir%%/}
+              echo $HF_REPO_NAME
+            done
           
       # - name: Create/Check HF_Repo
       #   run: |
@@ -58,33 +58,33 @@ jobs:
       #     git commit -m "Contents from ${{ env.HF_REPO_NAME }} github"
       #     git push --force -u origin main
       
-      - name: Create/Update HF Repo
-        run: |
-          git config --global user.name "Umang-Sehgal"
-          git config --global user.email "umangsehgal50@gmail.com"
-          git config --global init.defaultBranch main
+      # - name: Create/Update HF Repo
+      #   run: |
+      #     git config --global user.name "Umang-Sehgal"
+      #     git config --global user.email "umangsehgal50@gmail.com"
+      #     git config --global init.defaultBranch main
 
-          for dir in */;
-          do
-            HF_REPO_NAME=${dir%%/}
+      #     for dir in */;
+      #     do
+      #       env.HF_REPO_NAME=${dir%%/}
             
-            curl --location 'https://huggingface.co/api/repos/create' \
-            --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
-            --header 'Content-Type: application/json' \
-            --data '{
-              "type": "model",
-              "name": "${HF_REPO_NAME}",
-              "organization": "shellplc",
-              "private":true
-              }'
+      #       curl --location 'https://huggingface.co/api/repos/create' \
+      #       --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
+      #       --header 'Content-Type: application/json' \
+      #       --data '{
+      #         "type": "model",
+      #         "name": "${HF_REPO_NAME}",
+      #         "organization": "shellplc",
+      #         "private":true
+      #         }'
 
-            cd $HF_REPO_NAME
-            git init
-            git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
-            git add .
-            git commit -m "Contents from $HF_REPO_NAME github"
-            git push --force -u origin main
-          done
+      #       cd $HF_REPO_NAME
+      #       git init
+      #       git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
+      #       git add .
+      #       git commit -m "Contents from $HF_REPO_NAME github"
+      #       git push --force -u origin main
+      #     done
 
 
         
