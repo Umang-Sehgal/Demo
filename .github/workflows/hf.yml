@@ -22,8 +22,8 @@ jobs:
           fetch-depth: 0
           lfs: true
 
-      - name: Create and Update HF_Repo
-        run: bash script.sh
+      # - name: Create and Update HF_Repo
+      #   run: bash script.sh
 
         
       # - name: Demo loop
@@ -33,17 +33,17 @@ jobs:
       #         echo $num
       #       done
           
-      # - name: Create/Check HF_Repo
-      #   run: |
-      #     curl --location 'https://huggingface.co/api/repos/create' \
-      #     --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
-      #     --header 'Content-Type: application/json' \
-      #     --data '{
-      #       "type": "model",
-      #       "name": "${{ env.HF_REPO_NAME }}",
-      #       "organization": "shellplc",
-      #       "private":true
-      #     }'
+      - name: Create/Check HF_Repo
+        run: |
+          curl --location 'https://huggingface.co/api/repos/create' \
+          --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
+          --header 'Content-Type: application/json' \
+          --data '{
+            "type": "model",
+            "name": "model1/",
+            "organization": "shellplc",
+            "private":true
+          }'
           
       # - name: Push to HF
       #   run: |
