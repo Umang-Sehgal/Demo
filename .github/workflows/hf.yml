@@ -31,7 +31,7 @@ jobs:
           for dir in */;
             do
               # var = ${dir%%/}
-              eval "var = 1"
+              $var = 1
               echo $var
             done
           
