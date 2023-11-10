@@ -65,23 +65,23 @@ jobs:
 
           for dir in */;
           do
-            HF_REPO_NAME = ${dir%%/}
+            # HF_REPO_NAME = ${dir%%/}
             
             curl --location 'https://huggingface.co/api/repos/create' \
             --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
             --header 'Content-Type: application/json' \
             --data '{
               "type": "model",
-              "name": "${{env.HF_REPO_NAME}}",
+              "name": "${dir%%/}",
               "organization": "shellplc",
               "private":true
               }'
 
-            cd $HF_REPO_NAME
+            cd ${dir%%/}
             git init
-            git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
+            git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/${dir%%/}
             git add .
-            git commit -m "Contents from $HF_REPO_NAME github"
+            git commit -m "Contents from ${dir%%/} github"
             git push --force -u origin main
           done
 
