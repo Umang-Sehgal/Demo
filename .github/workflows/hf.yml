@@ -30,7 +30,7 @@ jobs:
         run: |
           for dir in */;
             do
-              echo $dir
+              echo ${dir%%/}
             done
           
       # - name: Create/Check HF_Repo
