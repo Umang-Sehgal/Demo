@@ -30,7 +30,8 @@ jobs:
         run: |
           for dir in */;
             do
-              var = ${dir%%/}
+              # var = ${dir%%/}
+              var = 1
               echo $var
             done
           
