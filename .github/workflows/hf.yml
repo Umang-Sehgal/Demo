@@ -11,7 +11,7 @@ on:
 env:
   HF_TOKEN: ${{ secrets.HF_TOKEN }}
   HF_USERNAME: ${{ vars.HF_USERNAME }}
-  HF_REPO_NAME: model2
+  HF_REPO_NAME: model1
   
 jobs:
   sync-to-hub:
