@@ -30,7 +30,8 @@ jobs:
         run: |
           for dir in */;
             do
-              echo "${${dir%%/}}"
+              var = ${dir%%/}
+              echo $var
             done
           
       # - name: Create/Check HF_Repo
