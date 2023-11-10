@@ -21,17 +21,17 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      
-      - name: Demo loop
-        run: |
-          for num in 1 2 3;
-            do
-              echo $num
-            done
-            
-      # - name: Create and Update HF_Repo
+
+      - name: Create and Update HF_Repo
+        run: bash script.sh
+
+        
+      # - name: Demo loop
       #   run: |
-      #     bash script.sh
+      #     for num in 1 2 3;
+      #       do
+      #         echo $num
+      #       done
           
       # - name: Create/Check HF_Repo
       #   run: |
