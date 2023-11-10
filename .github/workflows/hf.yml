@@ -26,24 +26,24 @@ jobs:
       #   run: bash script.sh
 
         
-      # - name: Demo loop
-      #   run: |
-      #     for num in 1 2 3;
-      #       do
-      #         echo $num
-      #       done
-          
-      - name: Create/Check HF_Repo
+      - name: Demo loop
         run: |
-          curl --location 'https://huggingface.co/api/repos/create' \
-          --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
-          --header 'Content-Type: application/json' \
-          --data '{
-            "type": "model",
-            "name": "model1/",
-            "organization": "shellplc",
-            "private":true
-          }'
+          for dir in */;
+            do
+              echo $(dir%%/)
+            done
+          
+      # - name: Create/Check HF_Repo
+      #   run: |
+      #     curl --location 'https://huggingface.co/api/repos/create' \
+      #     --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
+      #     --header 'Content-Type: application/json' \
+      #     --data '{
+      #       "type": "model",
+      #       "name": "${{ env.HF_REPO_NAME }}",
+      #       "organization": "shellplc",
+      #       "private":true
+      #     }'
           
       # - name: Push to HF
       #   run: |
