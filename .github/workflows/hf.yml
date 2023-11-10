@@ -36,7 +36,7 @@ jobs:
           
       - name: Create/Check HF_Repo
         run: |
-          var=$curl --location 'https://huggingface.co/api/repos/create' \
+          curl --location 'https://huggingface.co/api/repos/create' \
           --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
           --header 'Content-Type: application/json' \
           --data '{
@@ -45,7 +45,6 @@ jobs:
             "organization": "shellplc",
             "private":true
           }'
-          echo $var
           
       # - name: Push to HF
       #   run: |
