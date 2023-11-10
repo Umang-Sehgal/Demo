@@ -66,7 +66,7 @@ jobs:
 
           for dir in */;
           do
-            HF_REPO_NAME=${dir%%/}
+            # HF_REPO_NAME=${dir%%/}
             
             curl --location 'https://huggingface.co/api/repos/create' \
             --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
