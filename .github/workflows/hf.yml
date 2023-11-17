@@ -11,7 +11,7 @@ on:
 env:
   HF_TOKEN: ${{ secrets.HF_TOKEN }}
   HF_USERNAME: ${{ vars.HF_USERNAME }}
-  #HF_REPO_NAME: model1
+  HF_REPO_NAME: model1
   
 jobs:
   sync-to-hub:
@@ -34,58 +34,58 @@ jobs:
       #         echo "${{env.HF_REPO_NAME}}"
       #       done
           
-      # - name: Create/Check HF_Repo
-      #   run: |
-      #     curl --location 'https://huggingface.co/api/repos/create' \
-      #     --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
-      #     --header 'Content-Type: application/json' \
-      #     --data '{
-      #       "type": "model",
-      #       "name": "${{ env.HF_REPO_NAME }}",
-      #       "organization": "shellplc",
-      #       "private":true
-      #     }'
+      - name: Create/Check HF_Repo
+        run: |
+          curl --location 'https://huggingface.co/api/repos/create' \
+          --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
+          --header 'Content-Type: application/json' \
+          --data '{
+            "type": "model",
+            "name": "${{ env.HF_REPO_NAME }}",
+            "organization": "shellplc",
+            "private":true
+          }'
           
-      # - name: Push to HF
-      #   run: |
-      #     git config --global user.name "Umang-Sehgal"
-      #     git config --global user.email "umangsehgal50@gmail.com"
-      #     git config --global init.defaultBranch main
-      #     cd $HF_REPO_NAME
-      #     git init
-      #     git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
-      #     git add .
-      #     git commit -m "Contents from ${{ env.HF_REPO_NAME }} github"
-      #     git push --force -u origin main
-      
-      - name: Create/Update HF Repo
+      - name: Push to HF
         run: |
           git config --global user.name "Umang-Sehgal"
           git config --global user.email "umangsehgal50@gmail.com"
           git config --global init.defaultBranch main
+          cd $HF_REPO_NAME
+          git init
+          git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
+          git add .
+          git commit -m "Contents from ${{ env.HF_REPO_NAME }} github"
+          git push --force -u origin main
+      
+      # - name: Create/Update HF Repo
+      #   run: |
+      #     git config --global user.name "Umang-Sehgal"
+      #     git config --global user.email "umangsehgal50@gmail.com"
+      #     git config --global init.defaultBranch main
 
-          for dir in */;
-          do
-            HF_REPO_NAME=${dir%%/}
-            echo "HF_REPO_NAME=$HF_REPO_NAME" >> $GITHUB_ENV
+      #     for dir in */;
+      #     do
+      #       HF_REPO_NAME=${dir%%/}
+      #       echo "HF_REPO_NAME=$HF_REPO_NAME" >> $GITHUB_ENV
             
-            curl --location 'https://huggingface.co/api/repos/create' \
-            --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
-            --header 'Content-Type: application/json' \
-            --data '{
-              "type": "model",
-              "name": "${{env.HF_REPO_NAME}}", #error
-              "organization": "shellplc",
-              "private":true
-              }'
+      #       curl --location 'https://huggingface.co/api/repos/create' \
+      #       --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
+      #       --header 'Content-Type: application/json' \
+      #       --data '{
+      #         "type": "model",
+      #         "name": "${{env.HF_REPO_NAME}}", #error
+      #         "organization": "shellplc",
+      #         "private":true
+      #         }'
 
-            cd $HF_REPO_NAME
-            git init
-            git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
-            git add .
-            git commit -m "Contents from $HF_REPO_NAME github"
-            git push --force -u origin main
-          done
+      #       cd $HF_REPO_NAME
+      #       git init
+      #       git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
+      #       git add .
+      #       git commit -m "Contents from $HF_REPO_NAME github"
+      #       git push --force -u origin main
+      #     done
 
 
         
