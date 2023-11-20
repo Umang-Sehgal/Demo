@@ -78,7 +78,7 @@ jobs:
             --header 'Content-Type: application/json' \
             --data '{
               "type": "model",
-              "name": "${{env.HF_REPO_NAME}}", #error
+              "name": "${{ env.HF_REPO_NAME }}", #error
               "organization": "shellplc",
               "private":true
               }'
@@ -91,7 +91,7 @@ jobs:
             git init
             git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
             git add .
-            git commit -m "Contents from ${{env.HF_REPO_NAME}} github"
+            git commit -m "Contents from ${{ env.HF_REPO_NAME }} github"
             git push --force -u origin main
           done
 
