@@ -11,7 +11,7 @@ on:
 env:
   HF_TOKEN: ${{ secrets.HF_TOKEN }}
   HF_USERNAME: ${{ vars.HF_USERNAME }}
-  HF_REPO_NAME: model1
+  # HF_REPO_NAME: model1
   
 jobs:
   sync-to-hub:
@@ -70,7 +70,7 @@ jobs:
 
           for dir in */;
           do
-            # HF_REPO_NAME=${dir%%/}
+            HF_REPO_NAME=${dir%%/}
             # echo "HF_REPO_NAME=$HF_REPO_NAME" >> $GITHUB_ENV
             
             curl --location 'https://huggingface.co/api/repos/create' \
@@ -78,7 +78,7 @@ jobs:
             --header 'Content-Type: application/json' \
             --data '{
               "type": "model",
-              "name": "${{ env.HF_REPO_NAME }}",
+              "name": "$HF_REPO_NAME",
               "organization": "shellplc",
               "private":true
               }'
@@ -91,7 +91,7 @@ jobs:
             git init
             git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
             git add .
-            git commit -m "Contents from ${{ env.HF_REPO_NAME }} github"
+            git commit -m "Contents from $HF_REPO_NAME github"
             git push --force -u origin main
           done
 
