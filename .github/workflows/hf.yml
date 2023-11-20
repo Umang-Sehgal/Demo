@@ -32,7 +32,7 @@ jobs:
             do
               HF_REPO_NAME=${dir%%/}
               echo "HF_REPO_NAME=$HF_REPO_NAME" >> $GITHUB_ENV
-              echo "${{env.HF_REPO_NAME}}"
+              echo ${{env.HF_REPO_NAME}}
             done
           
       # - name: Create/Check HF_Repo
