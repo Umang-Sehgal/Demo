@@ -79,7 +79,7 @@ jobs:
             --header 'Content-Type: application/json' \
             --data '{
               "type": "model",
-              "name": "model2",
+              "name": "$HF_REPO_NAME",
               "organization": "shellplc",
               "private":true
               }'
