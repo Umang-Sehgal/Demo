@@ -71,6 +71,7 @@ jobs:
           for dir in */;
           do
             HF_REPO_NAME=${dir%%/}
+            HF_REPO_NAME=${HF_REPO_NAME// /}
             echo $HF_REPO_NAME
             # echo "HF_REPO_NAME=$HF_REPO_NAME" >> $GITHUB_ENV
             
