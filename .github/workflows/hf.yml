@@ -30,11 +30,11 @@ jobs:
         run: |
           for dir in */;
             do
-              # HF_REPO_NAME=${dir%%/}
+              HF_REPO_NAME=${dir%%/}
               # echo "HF_REPO_NAME=$HF_REPO_NAME" >> $GITHUB_ENV
-              echo "HF_REPO_NAME=${dir%%/}" >> "$GITHUB_ENV"
+              # echo "HF_REPO_NAME=${dir%%/}" >> "$GITHUB_ENV"
               # echo ${{env.HF_REPO_NAME}}
-              echo $HF_REPO_NAME
+              echo "$HF_REPO_NAME"
             done
           
       # - name: Create/Check HF_Repo
