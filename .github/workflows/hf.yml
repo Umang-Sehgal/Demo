@@ -64,7 +64,7 @@ jobs:
 
       - name:  testing
         run: |
-          cd model1
+          cd nogit
           git rev-parse --is-inside-work-tree
           
       # - name: Create/Update HF Repo
