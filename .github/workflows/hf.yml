@@ -65,10 +65,7 @@ jobs:
       - name:  testing
         run: |
           cd model1
-          for dir in */;
-          do
-            echo $dir
-          done
+          ls -a
           
       # - name: Create/Update HF Repo
       #   run: |
