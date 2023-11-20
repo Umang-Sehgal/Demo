@@ -78,7 +78,7 @@ jobs:
             --header 'Content-Type: application/json' \
             --data '{
               "type": "model",
-              "name": "${{ env.HF_REPO_NAME }}", #error
+              "name": "${{ env.HF_REPO_NAME }}",
               "organization": "shellplc",
               "private":true
               }'
