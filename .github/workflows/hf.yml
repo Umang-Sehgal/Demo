@@ -71,7 +71,6 @@ jobs:
           for dir in */;
           do
             HF_REPO_NAME=${dir%%/}
-            HF_REPO_NAME=${HF_REPO_NAME// /}
             echo $HF_REPO_NAME
             # echo "HF_REPO_NAME=$HF_REPO_NAME" >> $GITHUB_ENV
             
@@ -91,6 +90,7 @@ jobs:
             git add .
             git commit -m "Contents from $HF_REPO_NAME github"
             git push --force -u origin main
+            cd ..
           done
 
 
