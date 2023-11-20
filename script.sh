@@ -5,20 +5,24 @@ git config --global init.defaultBranch main
 
 for dir in */;
 do
-          curl --location 'https://huggingface.co/api/repos/create' \
-          --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
-          --header 'Content-Type: application/json' \
-          --data '{
-            "type": "model",
-            "name": "${{env.dir}}",
-            "organization": "shellplc",
-            "private":true
-          }'
-
-          cd $dir
-          git init
-          git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$dir
-          git add .
-          git commit -m "Contents from $dir github"
-          git push --force -u origin main
+  HF_REPO_NAME=${dir%%/}
+  echo $HF_REPO_NAME         
+            
+  curl --location 'https://huggingface.co/api/repos/create' \
+  --header 'Authorization: Bearer ${{ env.HF_TOKEN }}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+      "type": "model",
+      "name": "'$HF_REPO_NAME'",
+      "organization": "shellplc",
+      "private":true
+      }'
+      
+  cd $HF_REPO_NAME
+  git init
+  git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
+  git add .
+  git commit -m "Contents from $HF_REPO_NAME github"
+  git push --force -u origin main
+  cd ..
 done
