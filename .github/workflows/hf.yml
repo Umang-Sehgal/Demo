@@ -65,7 +65,7 @@ jobs:
       - name:  testing
         run: |
           cd model1
-          echo */
+          echo ls -a
           
       # - name: Create/Update HF Repo
       #   run: |
