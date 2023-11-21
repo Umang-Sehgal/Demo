@@ -22,8 +22,8 @@ jobs:
           fetch-depth: 0
           lfs: true
 
-      # - name: Create and Update HF_Repo
-      #   run: bash script.sh
+      - name: Create and Update HF_Repo
+        run: bash script.sh
 
         
       # - name: Demo loop
