@@ -20,7 +20,7 @@ do
       
   cd $HF_REPO_NAME
   git init
-  git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/shellplc/$HF_REPO_NAME
+  git remote add origin https://${{env.HF_USERNAME}}:${{env.HF_TOKEN}}@huggingface.co/shellplc/$HF_REPO_NAME
   git add .
   git commit -m "Contents from $HF_REPO_NAME github"
   git push --force -u origin main
